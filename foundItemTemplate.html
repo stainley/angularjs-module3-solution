@@ -1,0 +1,7 @@
+<ul>
+    <li ng-repeat="item in syntax.items">
+        ({{item.short_name}}), {{item.name}}
+        <button ng-click="syntax.removeItem($index);">Don't want this one!</button>
+    </li>
+</ul>
+<div class="error">{{syntax.warning}}</div>
