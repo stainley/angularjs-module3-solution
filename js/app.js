@@ -33,13 +33,15 @@
     }
 
 
-    NarrowItDownController.$inject = ['MenuSearchService']
+    NarrowItDownController.$inject = ['$scope', 'MenuSearchService']
     function NarrowItDownController(MenuSearchService) {
         var ctrl = this;
-        ctrl.searchTerm = "";
+        ctrl.searchTerm = '%scope';
 
-        ctrl.searchTerm = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
-        console.log(ctrl.searchTerm);
+        ctrl.getMatchedMenuItems = function () {
+            console.log("Finding: " + ctrl.searchTerm);
+            MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+        }
     }
 
 
