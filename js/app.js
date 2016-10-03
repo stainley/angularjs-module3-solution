@@ -6,28 +6,30 @@
 
 
     NarrowItDownController.$inject = ['MenuSearchService']
-    function NarrowItDownController() {
+    function NarrowItDownController(MenuSearchService) {
         var menu = this;
 
         var promise = MenuSearchService.getMatchedMenuItems();
+
     }
 
 
-    MenuSearchService.$inject = [$http]
+    MenuSearchService.$inject = ['$http']
     function MenuSearchService($http) {
+
         var service = this;
 
-        service.getMatchedMenuItems = function(searchTerm) {
+        service.getMatchedMenuItems = function() {
             return $http({
                 method: "GET",
-                url: ("https://davids-restaurant.herokuapp.com/menu_items.json"),
-                params: {
+                url: ("https://davids-restaurant.herokuapp.com/menu_items.json")
+                /*params: {
                     category: searchTerm
-                }
+                }*/
             }).then( function (result) {
                 var foundItems;
-                console.log(result);
 
+                console.log(result.data);
                 return foundItems;
             });
         };
