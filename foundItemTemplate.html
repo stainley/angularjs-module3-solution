@@ -1,9 +1,14 @@
 <ul>
-    {{foundIt}}
-    <li ng-repeat="item in syntax.ctrl.found">
-        ({{item.short_name}}), {{item.name}}
-
-        <button ng-click="syntax.removeItem($index);">Don't want this one!</button>
-    </li>
+    <div>
+        <li ng-repeat="item in items">
+            <div>
+                <b>Name:</b>({{item.name}})
+            </div>
+            <div>
+                <b>Description:</b> {{item.description}}
+            </div>
+            <button ng-click="onRemove({index: $index});">Don't want this one!</button>
+        </li>
+    </div>
 </ul>
-<div class="error">{{syntax.warning}}</div>
+<div ng-if="items.length == 0">Nothing Found</div>
